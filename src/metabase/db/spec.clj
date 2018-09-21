@@ -16,14 +16,14 @@
 
 (defn postgres
   "Create a database specification for a postgres database. Opts should include
-  keys for :db, :user, and :password. You can also optionally set host and
-  port."
-  [{:keys [host port db]
+  keys for :db, :user, :password, and :query. You can also optionally set host
+  and port."
+  [{:keys [host port db query]
     :or   {host "localhost", port 5432, db ""}
     :as   opts}]
   (merge {:classname   "org.postgresql.Driver"
           :subprotocol "postgresql"
-          :subname     (str "//" host ":" port "/" db "?OpenSourceSubProtocolOverride=true")}
+          :subname     (str "//" host ":" port "/" db "?" query "&OpenSourceSubProtocolOverride=true")}
          (dissoc opts :host :port :db)))
 
 (defn mysql

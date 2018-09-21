@@ -93,7 +93,8 @@
                           :port     (config/config-int :mb-db-port)
                           :dbname   (config/config-str :mb-db-dbname)
                           :user     (config/config-str :mb-db-user)
-                          :password (config/config-str :mb-db-pass)}))))
+                          :password (config/config-str :mb-db-pass)
+                          :query    (config/config-str :mb-db-query)}))))
 
 (defn jdbc-details
   "Takes our own MB details map and formats them properly for connection details for JDBC."
